@@ -1,0 +1,47 @@
+﻿<Window x:Class="KiddEsports.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KiddEsports"
+        mc:Ignorable="d"
+        Title="Kid Esports" Height="500" Width="800">
+
+    <Grid Background="AliceBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="10">
+            <Label x:Name="lblTeamName" FontSize="20">Team Name:</Label>
+            <TextBox x:Name="txtTeamName" FontSize="20" Cursor="Hand"/>
+            <Label x:Name="lblPrimaryContact" FontSize="20">Primary Contact:</Label>
+            <TextBox x:Name="txtPrimaryContact" FontSize="20" Cursor="Hand"/>
+            <Label x:Name="lblContactPhone" FontSize="20">Contact Phone:</Label>
+            <TextBox x:Name="txtContactPhone" FontSize="20" Cursor="Hand"/>
+            <Label x:Name="lblContactEmail" FontSize="20">Contact Email:</Label>
+            <TextBox x:Name="txtContactEmail" FontSize="20" Cursor="Hand"/>
+            <Label x:Name="lblCompetitionPoints" FontSize="20">Competition Points:</Label>
+            <TextBox x:Name="txtCompetitionPoints" FontSize="20" Cursor="Hand"/>
+        </StackPanel>
+
+        <DataGrid x:Name="table" Grid.Column="1" Margin="10" IsReadOnly="True" CanUserAddRows="False" Cursor="Hand">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="TableRowDoubleClick" />
+                </Style>
+            </DataGrid.Resources>
+        </DataGrid>
+        <Button x:Name="btnAdd"  Grid.Row="1" Margin="10,10,163,52" Click="AddButtonClick" Content="Add" Cursor="Hand"/>
+        <Button x:Name="btnDelete"  Grid.Row="1" Margin="10,52,163,11" Click="DeleteButtonClick" Content="Delete" IsEnabled="False" Cursor="Hand"/>
+        <Button x:Name="btnUpdate"  Grid.Row="1" Margin="133,10,40,52" Click="UpdateButtonClick" Content="Update" IsEnabled="False" Cursor="Hand"/>
+        <Button x:Name="btnClear"  Grid.Row="1" Margin="133,52,40,10" Click="ClearButtonClick" Content="New" Cursor="Hand"/>
+        <Button x:Name="btnExit"  Grid.Row="1" Margin="429,52,10,10" Click="ExitButtonClick" Content="Exit" Grid.Column="1" Cursor="Hand"/>
+    </Grid>
+</Window>
