@@ -43,5 +43,7 @@
         <Button x:Name="btnUpdate"  Grid.Row="1" Margin="133,10,40,52" Click="UpdateButtonClick" Content="Update" IsEnabled="False" Cursor="Hand"/>
         <Button x:Name="btnClear"  Grid.Row="1" Margin="133,52,40,10" Click="ClearButtonClick" Content="New" Cursor="Hand"/>
         <Button x:Name="btnExit"  Grid.Row="1" Margin="429,52,10,10" Click="ExitButtonClick" Content="Exit" Grid.Column="1" Cursor="Hand"/>
+        <TextBox x:Name="txtSearchTerm" Grid.Column="1" HorizontalAlignment="Left" Margin="13,0,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="242" Height="34"/>
+        <Button x:Name="btnSearch" Grid.Column="1" Content="Search" HorizontalAlignment="Left" Margin="266,0,0,0" Grid.Row="1" VerticalAlignment="Center" Height="34" Width="90"/>
     </Grid>
 </Window>
