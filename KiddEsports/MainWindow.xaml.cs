@@ -243,7 +243,5 @@ namespace KiddEsports
             txtCompetitionPoints.Text = string.Empty;
         }
         #endregion
-
-       
     }
 }
