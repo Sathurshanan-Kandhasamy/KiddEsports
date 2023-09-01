@@ -43,5 +43,6 @@
         <Button x:Name="btnUpdate"  Grid.Row="1" Margin="133,10,40,52" Click="UpdateButtonClick" Content="Update" IsEnabled="False" Cursor="Hand"/>
         <Button x:Name="btnClear"  Grid.Row="1" Margin="133,52,40,10" Click="ClearButtonClick" Content="New" Cursor="Hand"/>
         <Button x:Name="btnExit"  Grid.Row="1" Margin="429,52,10,10" Click="ExitButtonClick" Content="Exit" Grid.Column="1" Cursor="Hand"/>
+        <Label Grid.Column="1" Content="Double click on a row in order to update or delete a team." HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="322"/>
     </Grid>
 </Window>
