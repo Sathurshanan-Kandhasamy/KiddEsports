@@ -9,6 +9,7 @@ namespace KiddEsports
     public class Team
     {
         #region Setup
+        // Fields.
         private string _teamName = string.Empty;
         private string _primaryContact = string.Empty;
         private string _contactPhone = string.Empty;
@@ -80,13 +81,13 @@ namespace KiddEsports
             }
         }
 
-        // Contructor to create empty object.
+        // Contructor to create an empty team object.
         public Team()
         {
 
         }
 
-        // Contructor to create object with values.
+        // Contructor to create team object with values.
         public Team(string teamName, string primaryContact, string contactPhone, string contactEmail,
         int competitionPoints)
         {

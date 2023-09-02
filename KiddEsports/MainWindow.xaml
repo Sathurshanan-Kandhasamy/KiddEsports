@@ -8,41 +8,68 @@
         Title="Kid Esports" Height="500" Width="800">
 
     <Grid Background="AliceBlue">
+        <!-- Grid colums definitions. -->
         <Grid.ColumnDefinitions>
+            <!-- First column. -->
             <ColumnDefinition/>
+            <!-- Second column. -->
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
+        <!-- Grid row definitions. -->
         <Grid.RowDefinitions>
+            <!-- First row. -->
             <RowDefinition Height="4*"/>
+            <!-- Second row. -->
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <!-- Stack panel. -->
         <StackPanel Margin="10">
+            <!-- Team name label. -->
             <Label x:Name="lblTeamName" FontSize="20">Team Name:</Label>
+            <!-- Team name textbox. -->
             <TextBox x:Name="txtTeamName" FontSize="20" Cursor="Hand"/>
+            <!-- Primary contact label. -->
             <Label x:Name="lblPrimaryContact" FontSize="20">Primary Contact:</Label>
+            <!-- Primary contact textbox. -->
             <TextBox x:Name="txtPrimaryContact" FontSize="20" Cursor="Hand"/>
+            <!-- Contact phone label. -->
             <Label x:Name="lblContactPhone" FontSize="20">Contact Phone:</Label>
+            <!-- Contact phone textbox.-->
             <TextBox x:Name="txtContactPhone" FontSize="20" Cursor="Hand"/>
+            <!-- Contact email label. -->
             <Label x:Name="lblContactEmail" FontSize="20">Contact Email:</Label>
+            <!-- Contact email textbox. -->
             <TextBox x:Name="txtContactEmail" FontSize="20" Cursor="Hand"/>
+            <!-- Competition points label. -->
             <Label x:Name="lblCompetitionPoints" FontSize="20">Competition Points:</Label>
+            <!-- Competition points textbox. -->
             <TextBox x:Name="txtCompetitionPoints" FontSize="20" Cursor="Hand"/>
         </StackPanel>
 
+        <!-- Datagrid. -->
         <DataGrid x:Name="table" Grid.Column="1" Margin="10" IsReadOnly="True" CanUserAddRows="False" Cursor="Hand">
+            <!-- Datagrid resources. -->
             <DataGrid.Resources>
+                <!-- Setting style targeted at datagrid row. -->
                 <Style TargetType="DataGridRow">
+                    <!-- Table row double click event setter. -->
                     <EventSetter Event="MouseDoubleClick" Handler="TableRowDoubleClick" />
                 </Style>
             </DataGrid.Resources>
         </DataGrid>
+        <!-- Add button. -->
         <Button x:Name="btnAdd"  Grid.Row="1" Margin="10,10,163,52" Click="AddButtonClick" Content="Add" Cursor="Hand"/>
+        <!-- Delete button. -->
         <Button x:Name="btnDelete"  Grid.Row="1" Margin="10,52,163,11" Click="DeleteButtonClick" Content="Delete" IsEnabled="False" Cursor="Hand"/>
+        <!-- Update button. -->
         <Button x:Name="btnUpdate"  Grid.Row="1" Margin="133,10,40,52" Click="UpdateButtonClick" Content="Update" IsEnabled="False" Cursor="Hand"/>
+        <!-- Clear button. -->
         <Button x:Name="btnClear"  Grid.Row="1" Margin="133,52,40,10" Click="ClearButtonClick" Content="New" Cursor="Hand"/>
+        <!-- Exit button. -->
         <Button x:Name="btnExit"  Grid.Row="1" Margin="429,52,10,10" Click="ExitButtonClick" Content="Exit" Grid.Column="1" Cursor="Hand"/>
+        <!-- Label for displaying instructions of updating and deleting a team. -->
         <Label Grid.Column="1" Content="Double click on a row in order to update or delete a team." HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="322"/>
     </Grid>
 </Window>
