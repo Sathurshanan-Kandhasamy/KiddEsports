@@ -18,280 +18,301 @@ namespace KiddEsports
     public partial class MainWindow : Window
     {
         #region Setup
-        // Teams is a list that stores Team objects.
+        // Stores list of team objects.
         List<Team> teams = new List<Team>();
 
-        // This variable stores contact email input field value from the form.
+        // Stores entered contactEmail value.
         string contactEmail = string.Empty;
-        // This variable stores team name input field value from the form.
+        // Stores entered teamName value.
         string teamName = string.Empty;
 
-        // Create a instance of file manager class.
+        // Creates an instance of FileManager class.
         FileManager file = new FileManager();
 
-        // Create a instance of form validation class.
+        // Creates an instance of FormValidation class.
         FormValidation formValidation = new FormValidation();
 
-        // Create a instance of message class.
+        // Creates an instance of Message class.
         Message message = new Message();
 
         // Main window contructor.
         public MainWindow()
         {
-            // Initialize component.
+            // Initializes component.
             InitializeComponent();
 
-            // Read team data from TeamData.CSV file and store them in teams variable.
+            // Reads team data from TeamData.csv file and stores them in teams variable.
             teams = file.ReadDataFromFile();
 
-            // Call update table method to update the table.
+            // Update the teams table.
             UpdateTable();
         }
         #endregion
 
         #region Events
-        // Add button click event handler.
+        // Handles addBtn click event.
         private void AddButtonClick(object sender, RoutedEventArgs e)
         {
-            // Store all form fields values in an array.
+            // Stores all form input fields values in an array.
             string[] formFields = new string[5] { txtTeamName.Text, txtPrimaryContact.Text,
             txtContactPhone.Text, txtContactEmail.Text, txtCompetitionPoints.Text };
 
-            // If any of the form fields are empty, show an error message.
+            // If any of the form input fields are empty.
             if (formValidation.IsAllFieldsFilled(formFields) == false)
             {
+                // Shows an error messsage.
                 message.ShowErrorMessage("Fill out all the fields on the form.");
                 return;
             }
-            // If team name already exist in the TeamData.CSV file, show an error message.
+            // If the entered teamName already exists in the TeamData.csv file.
             if (formValidation.IsTeamAlreadyExist(txtTeamName.Text, teams))
             {
+                // Shows an error message.
                 message.ShowErrorMessage("Team name already exist.");
                 return;
             }
-            // If entered phone number is not valid, show an error message.
+            // If the entered contactPhone is invalid.
             if (!formValidation.IsValidPhoneNumber(txtContactPhone.Text))
             {
+                // Shows an error message.
                 message.ShowErrorMessage("Enter a local phone number without spaces and country code.");
                 return;
             }
-            // If entered email is not valid, show an error message. 
+            // If the entered contactEmail is invalid.
             if (!formValidation.IsValidEmail(txtContactEmail.Text))
             {
+                // Shows an error message. 
                 message.ShowErrorMessage("Enter a valid email.");
                 return;
             }
-            // If email already exist in the TeamData.CSV file, show an error message.
+            // If the entered contactEmail already exists in the TeamData.csv file.
             if (formValidation.IsEmailAlreadyExist(txtContactEmail.Text, teams))
             {
+                // Shows an error message.
                 message.ShowErrorMessage("Email already exist.");
                 return;
             }
-            // If entered competition points is not a positive number, show an error message.
+            // If the entered competitionPoints is not a positive number.
             if (!formValidation.IsPositiveNumber(txtCompetitionPoints.Text))
             {
+                // Shows an error message.
                 message.ShowErrorMessage("Competition points must be a positive number.");
                 return;
             }
 
-            // If all form fields values passed the validations.
+            // If all the form input field values are valid.
             // Create a new team with Team class.
             Team newTeam = new Team();
             newTeam.TeamName = txtTeamName.Text;
             newTeam.PrimaryContact = txtPrimaryContact.Text;
             newTeam.ContactPhone = txtContactPhone.Text;
             newTeam.ContactEmail = txtContactEmail.Text;
-            // Convert competition points which is a string to a number.
+            // Parse competitionPoints to a number.
             newTeam.CompetitionPoints = int.Parse(txtCompetitionPoints.Text);
 
-            // Add newly created team to teams list
+            // Add the new team to teams list.
             teams.Add(newTeam);
-            // Convert teams list to an array and save it to TeamData.CSV file.
+            // Convert teams list to an array and save it to TeamData.csv file.
             file.WriteDataToFile(teams.ToArray());
 
-            // Update the table to show the newly created team with other teams in the table.
+            // Updates the teams table to show the new team.
             UpdateTable();
 
-            // Clear all form fields values.
+            // Clear all form input fields.
             SetFormFieldsEmpty();
 
-            // Set the cursor on the team name input field in the form.
+            // Set the cursor on the teamName input field in the form.
             txtTeamName.Focus();
         }
 
-        // Update button click event handler.
+        // Handles btnUpdate click event.
         private void UpdateButtonClick(object sender, RoutedEventArgs e)
         {
-            // Store all form fields values in an array.
+            // Stores all form input fields values in an array.
             string[] formFields = new string[5] { txtTeamName.Text, txtPrimaryContact.Text, txtContactPhone.Text,
             txtContactEmail.Text, txtCompetitionPoints.Text };
 
-            // If any of the form fields are empty, show an error message.
+            // If any of the form input fields are empty.
             if (formValidation.IsAllFieldsFilled(formFields) == false)
             {
+                // Shows an error message.
                 message.ShowErrorMessage("Fill out all the fields on the form.");
                 return;
             }
-            // If entered team name already exist in the TeamData.CSV file, show an error message.
+            // If the entered teamName already exists in the TeamData.csv file.
             if (!txtTeamName.Text.Equals(teamName))
             {
                 if (formValidation.IsTeamAlreadyExist(txtTeamName.Text, teams))
                 {
+                    // Shows an error message.
                     message.ShowErrorMessage("Team name already exist.");
                     return;
                 }
             }
-            // If entered phone number is not valid, show an error message.
+            // If the entered contactPhone is invalid.
             if (!formValidation.IsValidPhoneNumber(txtContactPhone.Text))
             {
+                // Shows an error message.
                 message.ShowErrorMessage("Enter a local phone number wihout spaces and country code.");
                 return;
             }
-            // If entered email is not valid, show an error message. 
+            // If the entered contactEmail is invalid.
             if (!formValidation.IsValidEmail(txtContactEmail.Text))
             {
+                // Shows an error message.
                 message.ShowErrorMessage("Enter a valid email.");
                 return;
             }
-            // If entered email already exist in the TeamData.CSV file, show an error message.
+            // If the entered contactEmail already exists in the TeamData.csv file.
             if (!txtContactEmail.Text.Equals(contactEmail))
             {
                 if (formValidation.IsEmailAlreadyExist(txtContactEmail.Text, teams))
                 {
+                    // Shows an error messsage.
                     message.ShowErrorMessage("Email already exist.");
                     return;
                 }
             }
-            // If entered competition points is not a positive number, show an error message.
+            // If the entered competitionPoints is not a positive number.
             if (!formValidation.IsPositiveNumber(txtCompetitionPoints.Text))
             {
+                // Shows an error message.
                 message.ShowErrorMessage("Competition points must be a positive number.");
                 return;
             }
 
-            
-             // Go through each team in the teams list. 
-             // if entered team name exist in the teams list, set teamName variable to found team's name.
-             // Then break the loop.
+             // Interates through each team in the teams list.
             foreach (Team team in teams)
             {
+                // If the team's teamName is entered teamName value.
                 if (team.TeamName.Equals(teamName))
                 {
+                    // Sets form input fields values to this team's field values.
                     team.TeamName = txtTeamName.Text;
                     team.PrimaryContact = txtPrimaryContact.Text;
                     team.ContactPhone = txtContactPhone.Text;
                     team.ContactEmail = txtContactEmail.Text;
+                    // Parses conpetitionPoints values to a number.
                     team.CompetitionPoints = int.Parse(txtCompetitionPoints.Text);
+                    // Sets teamName variable to team's teamName.
                     teamName = team.TeamName;
+                    // Breaks the loop.
                     break;
                 }
             }
 
-            // Convert teams list to an array save it to TeamData.CSV file.
+            // Converts teams list to an array and saves it to TeamData.csv file.
             file.WriteDataToFile(teams.ToArray());
 
-            // Update the table.
+            // Updates the teams table.
             UpdateTable();
         }
 
-        // Delete button click event handler.
+        // Handles btnDelete click event.
         private void DeleteButtonClick(object sender, RoutedEventArgs e)
         {
-            // When delete button clicked, show an warning message box with YES or NO choice.
-            // if YES is clicked.
+            // Shows a warning message with YES and NO buttons and if YES button is clicked.
             if (message.ShowWarningMessageYes("Do you want to permanently delete this team?"))
             {
-                // Find the position of the team name in the teams list.
+                // Finds the position of the teamName in the teams list.
                 int index = teams.FindIndex(team => team.TeamName.Equals(teamName));
-                // If team name exist in the team list, remove team and update TeamData.CSV file.
-                // Set contact email and team name input fields empty and update table.
-                // If team not found in the teams list, show an error message.
+                // If the teamName exists in the teams list.
                 if (index > -1)
                 {
+                    // Removes a team at specified index in the teams list.
                     teams.RemoveAt(index);
+                    // Converts teams list to an array and saves it to TeamData.csv file.
                     file.WriteDataToFile(teams.ToArray());
+                    // Sets contactEmail variable to an empty string.
                     contactEmail = string.Empty;
+                    // Sets contactEmail variable to an empty string.
                     teamName = string.Empty;
+                    // Updates the teams table.
                     UpdateTable();
                 }
                 else
                 {
+                    // Otherwise shows an error messsage.
                     message.ShowErrorMessage("Team does not exist.");
                 }
             }
 
-            // Clear all form fields.
+            // Clears all form input fields.
             ClearFormFields();
         }
 
-        // Clear button click event handler.
+        // Handles btnClear click event.
         private void ClearButtonClick(object sender, RoutedEventArgs e)
         {
-            // Clear all form fields.
+            // Clears all form input fields.
             ClearFormFields();
         }
 
-        // Table row double click event handler.
+        // Handles table row double click event.
         private void TableRowDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            // Get the team object from table and store it in the team variable.
+            // Gets the team object from table and stores it in the team variable.
             var row = sender as DataGridRow;
             var team = row.DataContext as Team;
 
-            // if team variable value is not empty.
+            // if the team variable value is not null.
             if (team != null)
             {
-                // Set contactEmail and teamName variables values.
+                // Sets contactEmail variable value.
                 contactEmail = team.ContactEmail;
+                // Sets teamName variable value.
                 teamName = team.TeamName;
-
-                // Set form fields values.
+                
+                // Sets form input fields values to team's field values.
                 txtTeamName.Text = team.TeamName;
                 txtPrimaryContact.Text = team.PrimaryContact;
                 txtContactPhone.Text = team.ContactPhone;
                 txtContactEmail.Text = team.ContactEmail;
+                // Converts competitionPoints value to string.
                 txtCompetitionPoints.Text = team.CompetitionPoints.ToString();
 
-                // Disable add button
+                // Disables addBtn.
                 btnAdd.IsEnabled = false;
-                // Enable update and delete buttons.
+                // Enables updateBtn.
                 btnUpdate.IsEnabled = true;
+                // Enables deleteBtn.
                 btnDelete.IsEnabled = true;
             }
         }
 
-        // Exit button click event handler.
+        // Handles exit button click event.
         private void ExitButtonClick(object sender, RoutedEventArgs e)
         {
-            // Close the GUI application.
+            // Closes the GUI.
             Close();
         }
         #endregion
 
         #region Helpers        
-        // Clear form fields.
+        // Clears form input fields.
         private void ClearFormFields()
         {
-            // Set form fields empty.
+            // Sets all form input fields value to an empty string.
             SetFormFieldsEmpty();
 
-            // Enable add button
+            // Enables addBtn.
             btnAdd.IsEnabled = true;
-            // Disable update and delete buttons.
+            // Disables updateBtn.
             btnUpdate.IsEnabled = false;
+            // Disables deleteBtn.
             btnDelete.IsEnabled = false;
         }
 
-        // Update table.
+        // Updates teams table.
         private void UpdateTable()
         {
-            // Set table source to teams list.
+            // Sets table source to teams list.
             table.ItemsSource = teams;
-            // Refresh the table.
+            // Refreshs the teams table.
             table.Items.Refresh();
         }
 
-        // Set form fields empty.
+        // Sets all form input field values to an empty string.
         private void SetFormFieldsEmpty()
         {
             txtTeamName.Text = string.Empty;

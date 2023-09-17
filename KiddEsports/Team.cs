@@ -16,7 +16,7 @@ namespace KiddEsports
         private string _contactEmail = string.Empty;
         private int _competitionPoints = 0;
 
-        // Get and set team name.
+        // Gets and sets teamName.
         public string TeamName
         {
             get
@@ -29,7 +29,7 @@ namespace KiddEsports
             }
         }
 
-        // Get and set primary contact.
+        // Gets and sets primaryContact.
         public string PrimaryContact
         {
             get
@@ -42,7 +42,7 @@ namespace KiddEsports
             }
         }
 
-        // Get and set contact phone.
+        // Gets and sets contactPhone.
         public string ContactPhone
         {
             get
@@ -55,7 +55,7 @@ namespace KiddEsports
             }
         }
 
-        // Get and set contact email.
+        // Gets and sets contactmail.
         public string ContactEmail
         {
             get
@@ -67,8 +67,8 @@ namespace KiddEsports
                 _contactEmail = value;
             }
         }
-
-        // Get and set competition points.
+        
+        // Gets and sets competitionPoints.
         public int CompetitionPoints
         {
             get
@@ -81,13 +81,13 @@ namespace KiddEsports
             }
         }
 
-        // Contructor to create an empty team object.
+        // Constructor to create an empty team object.
         public Team()
         {
 
         }
 
-        // Contructor to create team object with values.
+        // Constructor to create a team object with values.
         public Team(string teamName, string primaryContact, string contactPhone, string contactEmail,
         int competitionPoints)
         {

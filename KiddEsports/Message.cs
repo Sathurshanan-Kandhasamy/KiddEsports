@@ -10,26 +10,26 @@ namespace KiddEsports
     public class Message
     {
         #region Setup
-        // Store application name for message box title.
+        // Stores MessageBox title value.
         string applicationName = "Team Tracker";
         #endregion
 
 
         #region Methods
         /// <summary>
-        /// Method for howing error message.
+        /// Shows an error message.
         /// </summary>
-        /// <param name="message">Message for the message box.</param>
+        /// <param name="message">Message string.</param>
         public void ShowErrorMessage(string message)
         {
             MessageBox.Show(message, applicationName, MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         /// <summary>
-        /// Method for showing warning message with YES and No buttons.
+        /// Shows an warning message with YES and No buttons.
         /// </summary>
-        /// <param name="message">Message for the message box.</param>
-        /// <returns>If YES clicked returns true, otherwise returns false.</returns>
+        /// <param name="message">Message string.</param>
+        /// <returns>True or false.</returns>
         public bool ShowWarningMessageYes(string message)
         {
             MessageBoxResult result = MessageBox.Show(message, applicationName, MessageBoxButton.YesNo,
