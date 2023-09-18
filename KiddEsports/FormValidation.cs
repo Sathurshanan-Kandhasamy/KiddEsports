@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace KiddEsports
 {
-    public class FormValidation
+    public static class FormValidation
     {
         #region Methods
         /// <summary>
@@ -18,7 +18,7 @@ namespace KiddEsports
         /// </summary>
         /// <param name="formInputs">Array of form input field values.</param>
         /// <returns>True or false.</returns>
-        public bool IsAllFieldsFilled(string[] formInputs)
+        public static bool IsAllFieldsFilled(string[] formInputs)
         {
             // Iterates through each string in the formInputs array and check if a value empty, null, or whitespace.
             foreach (string input in formInputs)
@@ -37,7 +37,7 @@ namespace KiddEsports
         /// <param name="teamName">Entered teamName value.</param>
         /// <param name="teamList">List of team objects.</param>
         /// <returns>True or false.</returns>
-        public bool IsTeamAlreadyExist(string teamName, List<Team> teams)
+        public static bool IsTeamAlreadyExist(string teamName, List<Team> teams)
         {
             // Removes whitespace at the start and end of teamName string.
             string sanitizedTeamName = teamName.Trim();
@@ -59,7 +59,7 @@ namespace KiddEsports
         /// </summary>
         /// <param name="contactEmail">Entered contactEmail value.</param>
         /// <returns>True or false.</returns>
-        public bool IsValidEmail(string contactEmail)
+        public static bool IsValidEmail(string contactEmail)
         {
             // Removes whitespace at the start and end of the contactEmail string.
             string sanitizedContactEmail = contactEmail.ToLower().Trim();
@@ -100,7 +100,7 @@ namespace KiddEsports
         /// <param name="contactEmail">Entered contactEmail value.</param>
         /// <param name="teamList">List of team objects.</param>
         /// <returns>True or false.</returns>
-        public bool IsEmailAlreadyExist(string contactEmail, List<Team> teamList)
+        public static bool IsEmailAlreadyExist(string contactEmail, List<Team> teamList)
         {
             // Converts contactEmail string to lowercase and removes whitespace at start and end.
             string sanitizedEmail = contactEmail.ToLower().Trim();
@@ -122,7 +122,7 @@ namespace KiddEsports
         /// </summary>
         /// <param name="competitionPoints">Entered competiionPoints value.</param>
         /// <returns>True or false.</returns>
-        public bool IsPositiveNumber(string competitionPoints)
+        public static bool IsPositiveNumber(string competitionPoints)
         {
             // If parsing competitionPoits value to number was failed, returns false.
             if (int.TryParse(competitionPoints, out _) != true)
@@ -146,7 +146,7 @@ namespace KiddEsports
         /// </summary>
         /// <param name="contactPhone">Entered contactPhone value.</param>
         /// <returns>True or false.</returns>
-        public bool IsValidPhoneNumber(string contactPhone)
+        public static bool IsValidPhoneNumber(string contactPhone)
         {
             // If the contactPhone value is a number, length is greater than zero and less than or equal to ten, returns true.
             // Otherwiser return false.

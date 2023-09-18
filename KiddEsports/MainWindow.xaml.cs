@@ -29,13 +29,7 @@ namespace KiddEsports
         // Creates an instance of FileManager class.
         FileManager file = new FileManager();
 
-        // Creates an instance of FormValidation class.
-        FormValidation formValidation = new FormValidation();
-
-        // Creates an instance of Message class.
-        Message message = new Message();
-
-        // Main window contructor.
+        // Main window constructor.
         public MainWindow()
         {
             // Initializes component.
@@ -44,7 +38,7 @@ namespace KiddEsports
             // Reads team data from TeamData.csv file and stores them in teams variable.
             teams = file.ReadDataFromFile();
 
-            // Update the teams table.
+            // Updates the teams table.
             UpdateTable();
         }
         #endregion
@@ -58,70 +52,70 @@ namespace KiddEsports
             txtContactPhone.Text, txtContactEmail.Text, txtCompetitionPoints.Text };
 
             // If any of the form input fields are empty.
-            if (formValidation.IsAllFieldsFilled(formFields) == false)
+            if (FormValidation.IsAllFieldsFilled(formFields) == false)
             {
                 // Shows an error messsage.
-                message.ShowErrorMessage("Fill out all the fields on the form.");
+                Message.ShowErrorMessage("Fill out all the fields on the form.");
                 return;
             }
             // If the entered teamName already exists in the TeamData.csv file.
-            if (formValidation.IsTeamAlreadyExist(txtTeamName.Text, teams))
+            if (FormValidation.IsTeamAlreadyExist(txtTeamName.Text, teams))
             {
-                // Shows an error message.
-                message.ShowErrorMessage("Team name already exist.");
+                // Shows an error Message.
+                Message.ShowErrorMessage("Team name already exist.");
                 return;
             }
             // If the entered contactPhone is invalid.
-            if (!formValidation.IsValidPhoneNumber(txtContactPhone.Text))
+            if (!FormValidation.IsValidPhoneNumber(txtContactPhone.Text))
             {
-                // Shows an error message.
-                message.ShowErrorMessage("Enter a local phone number without spaces and country code.");
+                // Shows an error Message.
+                Message.ShowErrorMessage("Enter a local phone number without spaces and country code.");
                 return;
             }
             // If the entered contactEmail is invalid.
-            if (!formValidation.IsValidEmail(txtContactEmail.Text))
+            if (!FormValidation.IsValidEmail(txtContactEmail.Text))
             {
-                // Shows an error message. 
-                message.ShowErrorMessage("Enter a valid email.");
+                // Shows an error Message. 
+                Message.ShowErrorMessage("Enter a valid email.");
                 return;
             }
             // If the entered contactEmail already exists in the TeamData.csv file.
-            if (formValidation.IsEmailAlreadyExist(txtContactEmail.Text, teams))
+            if (FormValidation.IsEmailAlreadyExist(txtContactEmail.Text, teams))
             {
-                // Shows an error message.
-                message.ShowErrorMessage("Email already exist.");
+                // Shows an error Message.
+                Message.ShowErrorMessage("Email already exist.");
                 return;
             }
             // If the entered competitionPoints is not a positive number.
-            if (!formValidation.IsPositiveNumber(txtCompetitionPoints.Text))
+            if (!FormValidation.IsPositiveNumber(txtCompetitionPoints.Text))
             {
-                // Shows an error message.
-                message.ShowErrorMessage("Competition points must be a positive number.");
+                // Shows an error Message.
+                Message.ShowErrorMessage("Competition points must be a positive number.");
                 return;
             }
 
             // If all the form input field values are valid.
-            // Create a new team with Team class.
+            // Creates a new team with Team class.
             Team newTeam = new Team();
             newTeam.TeamName = txtTeamName.Text;
             newTeam.PrimaryContact = txtPrimaryContact.Text;
             newTeam.ContactPhone = txtContactPhone.Text;
             newTeam.ContactEmail = txtContactEmail.Text;
-            // Parse competitionPoints to a number.
+            // Parses competitionPoints to number.
             newTeam.CompetitionPoints = int.Parse(txtCompetitionPoints.Text);
 
-            // Add the new team to teams list.
+            // Adds the new team to teams list.
             teams.Add(newTeam);
-            // Convert teams list to an array and save it to TeamData.csv file.
+            // Converts teams list to an array and saves it to the TeamData.csv file.
             file.WriteDataToFile(teams.ToArray());
 
             // Updates the teams table to show the new team.
             UpdateTable();
 
-            // Clear all form input fields.
+            // Clears all form input fields.
             SetFormFieldsEmpty();
 
-            // Set the cursor on the teamName input field in the form.
+            // Sets the cursor on the teamName input field in the form.
             txtTeamName.Focus();
         }
 
@@ -133,51 +127,51 @@ namespace KiddEsports
             txtContactEmail.Text, txtCompetitionPoints.Text };
 
             // If any of the form input fields are empty.
-            if (formValidation.IsAllFieldsFilled(formFields) == false)
+            if (FormValidation.IsAllFieldsFilled(formFields) == false)
             {
-                // Shows an error message.
-                message.ShowErrorMessage("Fill out all the fields on the form.");
+                // Shows an error Message.
+                Message.ShowErrorMessage("Fill out all the fields on the form.");
                 return;
             }
             // If the entered teamName already exists in the TeamData.csv file.
             if (!txtTeamName.Text.Equals(teamName))
             {
-                if (formValidation.IsTeamAlreadyExist(txtTeamName.Text, teams))
+                if (FormValidation.IsTeamAlreadyExist(txtTeamName.Text, teams))
                 {
-                    // Shows an error message.
-                    message.ShowErrorMessage("Team name already exist.");
+                    // Shows an error Message.
+                    Message.ShowErrorMessage("Team name already exist.");
                     return;
                 }
             }
             // If the entered contactPhone is invalid.
-            if (!formValidation.IsValidPhoneNumber(txtContactPhone.Text))
+            if (!FormValidation.IsValidPhoneNumber(txtContactPhone.Text))
             {
-                // Shows an error message.
-                message.ShowErrorMessage("Enter a local phone number wihout spaces and country code.");
+                // Shows an error Message.
+                Message.ShowErrorMessage("Enter a local phone number wihout spaces and country code.");
                 return;
             }
             // If the entered contactEmail is invalid.
-            if (!formValidation.IsValidEmail(txtContactEmail.Text))
+            if (!FormValidation.IsValidEmail(txtContactEmail.Text))
             {
-                // Shows an error message.
-                message.ShowErrorMessage("Enter a valid email.");
+                // Shows an error Message.
+                Message.ShowErrorMessage("Enter a valid email.");
                 return;
             }
             // If the entered contactEmail already exists in the TeamData.csv file.
             if (!txtContactEmail.Text.Equals(contactEmail))
             {
-                if (formValidation.IsEmailAlreadyExist(txtContactEmail.Text, teams))
+                if (FormValidation.IsEmailAlreadyExist(txtContactEmail.Text, teams))
                 {
                     // Shows an error messsage.
-                    message.ShowErrorMessage("Email already exist.");
+                    Message.ShowErrorMessage("Email already exist.");
                     return;
                 }
             }
             // If the entered competitionPoints is not a positive number.
-            if (!formValidation.IsPositiveNumber(txtCompetitionPoints.Text))
+            if (!FormValidation.IsPositiveNumber(txtCompetitionPoints.Text))
             {
-                // Shows an error message.
-                message.ShowErrorMessage("Competition points must be a positive number.");
+                // Shows an error Message.
+                Message.ShowErrorMessage("Competition points must be a positive number.");
                 return;
             }
 
@@ -211,8 +205,8 @@ namespace KiddEsports
         // Handles btnDelete click event.
         private void DeleteButtonClick(object sender, RoutedEventArgs e)
         {
-            // Shows a warning message with YES and NO buttons and if YES button is clicked.
-            if (message.ShowWarningMessageYes("Do you want to permanently delete this team?"))
+            // Shows a warning Message with YES and NO buttons and if YES button is clicked.
+            if (Message.ShowWarningMessageYes("Do you want to permanently delete this team?"))
             {
                 // Finds the position of the teamName in the teams list.
                 int index = teams.FindIndex(team => team.TeamName.Equals(teamName));
@@ -233,7 +227,7 @@ namespace KiddEsports
                 else
                 {
                     // Otherwise shows an error messsage.
-                    message.ShowErrorMessage("Team does not exist.");
+                    Message.ShowErrorMessage("Team does not exist.");
                 }
             }
 
