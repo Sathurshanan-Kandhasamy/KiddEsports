@@ -20,14 +20,17 @@ namespace KiddEsports
         /// <returns>True or false.</returns>
         public static bool IsAllFieldsFilled(string[] formInputs)
         {
-            // Iterates through each string in the formInputs array and check if a value empty, null, or whitespace.
+            // Iterates through each string in the formInputs array.
             foreach (string input in formInputs)
             {
+                // If the string is empty, null, or whitespace.
                 if (string.IsNullOrWhiteSpace(input))
                 {
+                    // Returns false.
                     return false;
                 }
             }
+            // Otherwise returns true.
             return true;
         }
 
@@ -44,9 +47,10 @@ namespace KiddEsports
             // Iterates through each team in the teams list to check if team name already exists.
             foreach (Team team in teams)
             {
-                // If teamName exists, returns true.
+                // If teamName exists.
                 if (team.TeamName == sanitizedTeamName)
                 {
+                    // Returns true.
                     return true;
                 }
             }
@@ -129,14 +133,15 @@ namespace KiddEsports
             {
                 return false;
             }
-            // If the competionPoints value is less than zero, returns false.
+            // If the competionPoints value is less than zero.
             if (int.Parse(competitionPoints) < 0)
             {
+                // Returns false.
                 return false;
             }
             else
             {
-                // Otherwise return true.
+                // Else returns true.
                 return true;
             }
         }
@@ -148,15 +153,15 @@ namespace KiddEsports
         /// <returns>True or false.</returns>
         public static bool IsValidPhoneNumber(string contactPhone)
         {
-            // If the contactPhone value is a number, length is greater than zero and less than or equal to ten, returns true.
-            // Otherwiser return false.
+            // If the contactPhone value is a number, length is greater than zero and less than or equal to ten.
             if (int.TryParse(contactPhone, out _) && (contactPhone.Length > 0 && contactPhone.Length <= 10))
             {
+                // Returns true.
                 return true;
             }
             else
             {
-                // Otherwise returns false.
+                // Else returns false.
                 return false;
             }
         }

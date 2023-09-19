@@ -61,35 +61,35 @@ namespace KiddEsports
             // If the entered teamName already exists in the TeamData.csv file.
             if (FormValidation.IsTeamAlreadyExist(txtTeamName.Text, teams))
             {
-                // Shows an error Message.
+                // Shows an error message.
                 Message.ShowErrorMessage("Team name already exist.");
                 return;
             }
             // If the entered contactPhone is invalid.
             if (!FormValidation.IsValidPhoneNumber(txtContactPhone.Text))
             {
-                // Shows an error Message.
+                // Shows an error message.
                 Message.ShowErrorMessage("Enter a local phone number without spaces and country code.");
                 return;
             }
             // If the entered contactEmail is invalid.
             if (!FormValidation.IsValidEmail(txtContactEmail.Text))
             {
-                // Shows an error Message. 
+                // Shows an error message. 
                 Message.ShowErrorMessage("Enter a valid email.");
                 return;
             }
             // If the entered contactEmail already exists in the TeamData.csv file.
             if (FormValidation.IsEmailAlreadyExist(txtContactEmail.Text, teams))
             {
-                // Shows an error Message.
+                // Shows an error message.
                 Message.ShowErrorMessage("Email already exist.");
                 return;
             }
             // If the entered competitionPoints is not a positive number.
             if (!FormValidation.IsPositiveNumber(txtCompetitionPoints.Text))
             {
-                // Shows an error Message.
+                // Shows an error message.
                 Message.ShowErrorMessage("Competition points must be a positive number.");
                 return;
             }
@@ -129,7 +129,7 @@ namespace KiddEsports
             // If any of the form input fields are empty.
             if (FormValidation.IsAllFieldsFilled(formFields) == false)
             {
-                // Shows an error Message.
+                // Shows an error message.
                 Message.ShowErrorMessage("Fill out all the fields on the form.");
                 return;
             }
@@ -138,7 +138,7 @@ namespace KiddEsports
             {
                 if (FormValidation.IsTeamAlreadyExist(txtTeamName.Text, teams))
                 {
-                    // Shows an error Message.
+                    // Shows an error message.
                     Message.ShowErrorMessage("Team name already exist.");
                     return;
                 }
@@ -146,14 +146,14 @@ namespace KiddEsports
             // If the entered contactPhone is invalid.
             if (!FormValidation.IsValidPhoneNumber(txtContactPhone.Text))
             {
-                // Shows an error Message.
+                // Shows an error message.
                 Message.ShowErrorMessage("Enter a local phone number wihout spaces and country code.");
                 return;
             }
             // If the entered contactEmail is invalid.
             if (!FormValidation.IsValidEmail(txtContactEmail.Text))
             {
-                // Shows an error Message.
+                // Shows an error message.
                 Message.ShowErrorMessage("Enter a valid email.");
                 return;
             }
@@ -170,7 +170,7 @@ namespace KiddEsports
             // If the entered competitionPoints is not a positive number.
             if (!FormValidation.IsPositiveNumber(txtCompetitionPoints.Text))
             {
-                // Shows an error Message.
+                // Shows an error message.
                 Message.ShowErrorMessage("Competition points must be a positive number.");
                 return;
             }
@@ -205,7 +205,7 @@ namespace KiddEsports
         // Handles btnDelete click event.
         private void DeleteButtonClick(object sender, RoutedEventArgs e)
         {
-            // Shows a warning Message with YES and NO buttons and if YES button is clicked.
+            // Shows a warning message with YES and NO buttons and if YES button is clicked.
             if (Message.ShowWarningMessageYes("Do you want to permanently delete this team?"))
             {
                 // Finds the position of the teamName in the teams list.

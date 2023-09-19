@@ -24,12 +24,11 @@ namespace KiddEsports
             // Uses stream writer to write team details in the TeamData.csv file.
             using (var writer = new StreamWriter(fileName))
             {
-                /* Interates through each team object in the array and writes to TeamData.csv file, with each team field value separated by a
-                 * comma.
-                */
+                // Interates through each team object in the teams array.
                 foreach (Team team in teams)
                 {
-                    writer.WriteLine($"{team.TeamName},{team.PrimaryContact},{team.ContactPhone},{team.ContactEmail}," +
+                       // Writes team data in TeamData.csv file, with each team object field value separated by a comma.
+                       writer.WriteLine($"{team.TeamName},{team.PrimaryContact},{team.ContactPhone},{team.ContactEmail}," +
                         $"{team.CompetitionPoints}");
                 }
             }
