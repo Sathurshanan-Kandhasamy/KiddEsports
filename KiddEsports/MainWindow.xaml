@@ -8,7 +8,7 @@
         Title="Kid Esports" Height="500" Width="800">
 
     <Grid Background="AliceBlue">
-        <!-- Grid colums definitions. -->
+        <!-- Grid columns definitions. -->
         <Grid.ColumnDefinitions>
             <!-- First column. -->
             <ColumnDefinition/>
@@ -52,9 +52,9 @@
         <DataGrid x:Name="table" Grid.Column="1" Margin="10" IsReadOnly="True" CanUserAddRows="False" Cursor="Hand">
             <!-- Datagrid resources. -->
             <DataGrid.Resources>
-                <!-- Setting style targeted at datagrid row. -->
+                <!-- Sets style targeted at datagrid row. -->
                 <Style TargetType="DataGridRow">
-                    <!-- Table row double click event setter. -->
+                    <!-- Sets table row double click event. -->
                     <EventSetter Event="MouseDoubleClick" Handler="TableRowDoubleClick" />
                 </Style>
             </DataGrid.Resources>
